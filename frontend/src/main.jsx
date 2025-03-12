@@ -1,10 +1,15 @@
 import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router'
+import { BrowserRouter, Routes, Route } from 'react-router'
 import './index.css'
-import App from './App.jsx'
+import MainLayout from './shared/components/MainLayout'
+import HomePage from './features/home'
 
 createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>,
+	<BrowserRouter>
+		<Routes>
+			<Route path="/" element={<MainLayout />}>
+				<Route index element={<HomePage />} />
+			</Route>
+		</Routes>
+	</BrowserRouter>,
 )

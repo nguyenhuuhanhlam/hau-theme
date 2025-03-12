@@ -1,5 +1,11 @@
+import LatestNewsSection from '../latest-news-section'
+
 const HomePage = () => {
-	return <div>HOME!!!!</div>
+	return (
+		<>
+			<LatestNewsSection />
+		</>
+	)
 }
 
 export default HomePage
