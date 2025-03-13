@@ -4,7 +4,7 @@ import PostSlider from './components/PostSlider'
 const HomePage = () => {
 	return (
 		<div>
-			<div className="py-4">
+			<div className="py-8">
 				<PostSlider />
 			</div>
 			<LatestNewsSection />

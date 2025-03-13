@@ -1,7 +1,9 @@
+import { useEffect, useState } from 'react'
 import Slider from 'react-slick'
 
-
 const PostSlider = () => {
+	const [slideItems, setSlideItems] = useState([])
+
 	const setting = {
 		dots: true,
 		infinite: true,
@@ -11,18 +13,28 @@ const PostSlider = () => {
 		slidesToScroll: 1
 	}
 
+	useEffect(() => {
+		setSlideItems([
+			{ url: '/uploads/slides/slide-exam-1.jpg' },
+			{ url: '/uploads/slides/slide-exam-2.jpg' },
+			{ url: '/uploads/slides/slide-exam-3.jpg' },
+			{ url: '/uploads/slides/slide-exam-4.jpg' }
+		])
+	}, [])
+
 	return (
-		<div className="bg-sky-50">
+		<div>
 			<Slider {...setting}>
-				<div className="aspect-video">
-					<h3>SLIDE :: POST-1</h3>
-				</div>
-				<div className="aspect-video">
-					<h3>SLIDE :: POST-2</h3>
-				</div>
-				<div className="aspect-video">
-					<h3>SLIDE :: POST-3</h3>
-				</div>
+				{slideItems.map((item, k) => {
+					return (
+						<div key={k}>
+							<div
+								className="aspect-video bg-cover bg-bottom"
+								style={{ backgroundImage: `url(${item.url})` }}
+							></div>
+						</div>
+					)
+				})}
 			</Slider>
 		</div>
 	)

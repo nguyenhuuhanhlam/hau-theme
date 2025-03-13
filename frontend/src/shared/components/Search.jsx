@@ -46,7 +46,7 @@ const ExpandableSearchButton = () => {
 						/>
 						<div
 							type="submit"
-							className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 hover:text-gray-700"
+							className="absolute inset-y-0 right-0 flex items-center px-3 text-stone-500"
 						>
 							<MagnifyingGlassIcon />
 						</div>
@@ -54,7 +54,7 @@ const ExpandableSearchButton = () => {
 				) : (
 					<div
 						onClick={() => setIsExpanded(true)}
-						className="flex items-center w-8 h-8 justify-center text-gray-500 bg-white hover:bg-gray-100 hover:text-gray-700"
+						className="flex items-center w-8 h-8 justify-center text-stone-600 bg-stone-100 hover:bg-stone-200"
 					>
 						<MagnifyingGlassIcon />
 					</div>
