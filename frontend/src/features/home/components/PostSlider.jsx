@@ -14,13 +14,13 @@ const PostSlider = () => {
 	return (
 		<div className="bg-sky-50">
 			<Slider {...setting}>
-				<div>
+				<div className="aspect-video">
 					<h3>SLIDE :: POST-1</h3>
 				</div>
-				<div>
+				<div className="aspect-video">
 					<h3>SLIDE :: POST-2</h3>
 				</div>
-				<div>
+				<div className="aspect-video">
 					<h3>SLIDE :: POST-3</h3>
 				</div>
 			</Slider>

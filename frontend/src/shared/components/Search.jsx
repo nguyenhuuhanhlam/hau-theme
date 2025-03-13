@@ -1,70 +1,67 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react'
+import { MagnifyingGlassIcon } from '@radix-ui/react-icons'
+
 
 const ExpandableSearchButton = () => {
-	const [isExpanded, setIsExpanded] = useState(false);
-	const inputRef = useRef(null);
-	const containerRef = useRef(null);
+	const [isExpanded, setIsExpanded] = useState(false)
+	const inputRef = useRef(null)
+	const containerRef = useRef(null)
 
 	useEffect(() => {
 		// Focus vào input khi mở rộng
 		if (isExpanded && inputRef.current) {
-			inputRef.current.focus();
+			inputRef.current.focus()
 		}
-	}, [isExpanded]);
+	}, [isExpanded])
 
 	useEffect(() => {
 		// Xử lý click bên ngoài để thu gọn
 		const handleClickOutside = (event) => {
 			if (containerRef.current && !containerRef.current.contains(event.target)) {
-				setIsExpanded(false);
+				setIsExpanded(false)
 			}
 		};
 
 		document.addEventListener('mousedown', handleClickOutside);
 		return () => {
 			document.removeEventListener('mousedown', handleClickOutside);
-		};
-	}, []);
+		}
+	}, [])
 
 	const handleSubmit = (e) => {
-		e.preventDefault();
-		// Xử lý tìm kiếm
-		console.log('Tìm kiếm:', inputRef.current.value);
-	};
+		e.preventDefault()
+		console.log('Tìm kiếm:', inputRef.current.value)
+	}
 
 	return (
 		<div className="flex justify-end" ref={containerRef}>
-			<div className={`relative transition-all duration-300 ease-in-out ${isExpanded ? 'w-64' : 'w-10'}`}>
+			<div className={`relative transition-all duration-300 ease-in-out ${isExpanded ? 'w-64' : 'w-8'}`}>
 				{isExpanded ? (
 					<form onSubmit={handleSubmit} className="w-full">
 						<input
 							ref={inputRef}
 							type="text"
 							placeholder="Tìm kiếm..."
-							className="w-full py-2 pl-4 pr-10 text-sm text-gray-700 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+							className="w-full py-2 text-sm text-gray-700 bg-stone-50 focus:outline-none focus:ring-0"
 						/>
-						<button
+						<div
 							type="submit"
 							className="absolute inset-y-0 right-0 flex items-center px-3 text-gray-500 hover:text-gray-700"
 						>
-							<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-								<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-							</svg>
-						</button>
+							<MagnifyingGlassIcon />
+						</div>
 					</form>
 				) : (
-					<button
+					<div
 						onClick={() => setIsExpanded(true)}
-						className="flex items-center justify-center w-10 h-10 text-gray-500 bg-white rounded-full hover:bg-gray-100 hover:text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+						className="flex items-center w-8 h-8 justify-center text-gray-500 bg-white hover:bg-gray-100 hover:text-gray-700"
 					>
-						<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-						</svg>
-					</button>
+						<MagnifyingGlassIcon />
+					</div>
 				)}
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-export default ExpandableSearchButton;
+export default ExpandableSearchButton
