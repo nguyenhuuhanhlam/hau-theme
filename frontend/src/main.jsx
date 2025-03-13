@@ -1,6 +1,10 @@
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router'
+
 import './index.css'
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+
 import MainLayout from './shared/components/MainLayout'
 import HomePage from './features/home'
 

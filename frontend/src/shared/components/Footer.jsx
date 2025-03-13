@@ -1,6 +1,6 @@
 const Footer = () => {
 	return (
-		<div>FOOTER!!!!</div>
+		<div className="py-4">FOOTER-HERE !!!</div>
 	)
 }
 

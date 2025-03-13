@@ -1,21 +1,34 @@
+import { Link } from 'react-router'
+
 import LogoHAU from '../../assets/logo-HAU.svg'
 import LogoKKT from '../../assets/logo-KKT.svg'
 
+import ExpandableSearchButton from './Search'
+
 const TopNav = () => {
 	return (
-		<div className="flex p-4 gap-4 items-center">
-			<div className="flex gap-2 h-14">
+		<div className="flex py-4 gap-4 items-center">
+			<div className="flex gap-2 h-12">
 				<img src={LogoHAU} />
 				<img src={LogoKKT} />
 			</div>
-			<div className="flex gap-2">
-				<div>ITEM-1</div>
-				<div>ITEM-2</div>
-				<div>ITEM-3</div>
+
+			<div className="flex gap-8 ml-auto items-center">
+				<div className="hidden md:flex gap-2 text-xs">
+					<div><Link to="">GIỚI THIỆU</Link></div>
+					<div><Link to="">ĐÀO TẠO</Link></div>
+					<div><Link to="">SINH VIÊN</Link></div>
+					<div><Link to="">HOẠT ĐỘNG KHOA</Link></div>
+					<div><Link to="">HỢP TÁC - KẾT NỐI</Link></div>
+					<div><Link to="">TIN TỨC</Link></div>
+					<div><Link to="">NỘI BỘ</Link></div>
+				</div>
+				<div className="text-xs">
+					<ExpandableSearchButton />
+				</div>
 			</div>
-			<div>
-				SEARCH!
-			</div>
+
+			<div className="md:hidden">MNU</div>
 		</div>
 	)
 }
