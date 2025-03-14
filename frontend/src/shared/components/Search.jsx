@@ -35,7 +35,7 @@ const ExpandableSearchButton = () => {
 
 	return (
 		<div className="flex justify-end" ref={containerRef}>
-			<div className={`relative transition-all duration-300 ease-in-out ${isExpanded ? 'w-64' : 'w-8'}`}>
+			<div className={`relative transition-all duration-300 ease-in-out ${isExpanded ? 'w-48' : 'w-8'}`}>
 				{isExpanded ? (
 					<form onSubmit={handleSubmit} className="w-full">
 						<input

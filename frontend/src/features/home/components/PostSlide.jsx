@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Slider from 'react-slick'
 
-const PostSlider = () => {
+const PostSlide = () => {
 	const [slideItems, setSlideItems] = useState([])
 
 	const setting = {
@@ -40,4 +40,4 @@ const PostSlider = () => {
 	)
 }
 
-export default PostSlider
+export default PostSlide

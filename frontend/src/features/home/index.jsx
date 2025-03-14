@@ -1,11 +1,11 @@
-import LatestNewsSection from '../latest-news-section'
-import PostSlider from './components/PostSlider'
+import LatestNewsSection from './components/LatestNewsSection'
+import PostSlide from './components/PostSlide'
 
 const HomePage = () => {
 	return (
 		<div>
 			<div className="py-8">
-				<PostSlider />
+				<PostSlide />
 			</div>
 			<LatestNewsSection />
 		</div>

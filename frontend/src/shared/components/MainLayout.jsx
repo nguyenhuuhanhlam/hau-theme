@@ -5,7 +5,7 @@ import Footer from './Footer'
 const MainLayout = () => {
 	return (
 		<div>
-			<div className="border-b border-stone-100">
+			<div className="sticky top-0 z-50 bg-white border-b border-stone-100">
 				<div className="max-w-[960px] mx-auto">
 					<TopNav />
 				</div>

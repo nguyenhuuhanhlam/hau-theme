@@ -1,14 +1,25 @@
 import { useEffect, useState } from 'react'
-import { getPosts } from '../../core/services/apiClient'
+import { getPosts } from '@/core/services/apiClient'
+
+const objectToQueryString = (params) => {
+	return Object.keys(params)
+		.map(key => `${key}=${params[key]}`)
+		.join('&')
+}
 
 const LatestNewsSection = () => {
 	const [posts, setPosts] = useState([])
-	const per_page = 5
 
 	useEffect(() => {
-		const params = {}
+		const params = {
+			per_page: 5,
+			order: 'desc',
+			orderby: 'date',
+			_embed: true,
+			_fields: 'id,title,excerpt,date,author,categories,_links.wp:featuredmedia,_embedded'
+		}
 
-		getPosts(`per_page=${per_page}&order=desc&orderby=date&_embed=true`)
+		getPosts(objectToQueryString(params))
 			.then(res => {
 				setPosts(res.data)
 			})
@@ -16,7 +27,7 @@ const LatestNewsSection = () => {
 
 	return (
 		<div className="my-4">
-			<div className="text-xs pb-2">TIN MỚI NHẤT</div>
+			<div className="text-xs pb-2 font-bold px-2 md:px-0">TIN MỚI NHẤT</div>
 			<div>
 				{/* {
 					posts.length > 0
@@ -30,7 +41,6 @@ const LatestNewsSection = () => {
 						})
 						: null
 				} */}
-
 
 				<div className="container mx-auto">
 					<div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -49,13 +59,17 @@ const LatestNewsSection = () => {
 						</div>
 
 						<div className="flex flex-col items-center md:col-span-2">
-							<h2 className="text-lg font-semibold">
-								<ArticleCard title={posts[4]?.title?.rendered} image={posts[4]?._embedded['wp:featuredmedia'][0]['source_url']} />
+							<h2 className="text-lg w-full">
+								<ArticleCard
+									title={posts[4]?.title?.rendered}
+									image={posts[4]?._embedded['wp:featuredmedia'][0]['source_url']}
+									isSquareImage={true}
+								/>
 							</h2>
 						</div>
 
 						<div className="space-y-4 md:col-span-1">
-						{
+							{
 								posts.slice(2, 4)
 									.map(article =>
 									(
@@ -74,16 +88,18 @@ const LatestNewsSection = () => {
 	)
 }
 
-function ArticleCard({ title, image, category }) {
+function ArticleCard({ title, image, category = "Default", isSquareImage = false }) {
 	return (
-		<div className="bg-stone-50 overflow-hidden">
-			<img src={image} alt={title} className="w-full h-40 object-cover" />
-			<div>
-				<p className="text-sm text-green-600">{category}</p>
-				<h3 className="text-md font-semibold">{title}</h3>
+		<div className="overflow-hidden">
+			<div className={isSquareImage ? "aspect-square w-full" : "w-full h-40"}>
+				<img src={image} alt={title} className="w-full h-full object-cover" />
+			</div>
+			<div className="py-2">
+				<p className="text-xs bg-stone-50 inline-block px-2 py-0.5 rounded">{category}</p>
+				<h3 className="text-md font-semibold line-clamp-2 px-2 md:px-0">{title}</h3>
 			</div>
 		</div>
-	);
+	)
 }
 
 export default LatestNewsSection
