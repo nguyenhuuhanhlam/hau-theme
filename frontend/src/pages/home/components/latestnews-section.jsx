@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { getPosts } from '@/core/services/apiClient'
+import { useNavigate } from 'react-router'
+import { getPosts } from '@/services/apiClient'
 
 const objectToQueryString = (params) => {
 	return Object.keys(params)
@@ -9,6 +10,7 @@ const objectToQueryString = (params) => {
 
 const LatestNewsSection = () => {
 	const [posts, setPosts] = useState([])
+	let navigate = useNavigate()
 
 	useEffect(() => {
 		const params = {
@@ -25,23 +27,14 @@ const LatestNewsSection = () => {
 			})
 	}, [])
 
+	const handleClick = (postId) => {
+		navigate('/news/latest-news/' + postId)
+	}
+
 	return (
 		<div className="my-4">
 			<div className="text-xs pb-2 font-bold px-2 md:px-0">TIN MỚI NHẤT</div>
 			<div>
-				{/* {
-					posts.length > 0
-						? posts.map(post => {
-							return (
-								<div key={post.id} className="py-2">
-									<div className="font-bold">{post.title.rendered}</div>
-									<div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
-								</div>
-							)
-						})
-						: null
-				} */}
-
 				<div className="container mx-auto">
 					<div className="grid grid-cols-1 md:grid-cols-4 gap-4">
 						<div className="space-y-4 md:col-span-1">
@@ -53,6 +46,7 @@ const LatestNewsSection = () => {
 											key={article.id}
 											title={article.title.rendered}
 											image={article._embedded['wp:featuredmedia'][0]['source_url']}
+											onClick={() => handleClick(article.id)}
 										/>
 									))
 							}
@@ -64,6 +58,7 @@ const LatestNewsSection = () => {
 									title={posts[4]?.title?.rendered}
 									image={posts[4]?._embedded['wp:featuredmedia'][0]['source_url']}
 									isSquareImage={true}
+									onClick={() => handleClick(posts[4]?.id)}
 								/>
 							</h2>
 						</div>
@@ -77,6 +72,7 @@ const LatestNewsSection = () => {
 											key={article.id}
 											title={article.title.rendered}
 											image={article._embedded['wp:featuredmedia'][0]['source_url']}
+											onClick={() => handleClick(article.id)}
 										/>
 									))
 							}
@@ -88,7 +84,7 @@ const LatestNewsSection = () => {
 	)
 }
 
-function ArticleCard({ title, image, category = "Default", isSquareImage = false }) {
+function ArticleCard({ title, image, category = "Default", isSquareImage = false, onClick }) {
 	return (
 		<div className="overflow-hidden">
 			<div className={isSquareImage ? "aspect-square w-full" : "w-full h-40"}>
@@ -96,7 +92,12 @@ function ArticleCard({ title, image, category = "Default", isSquareImage = false
 			</div>
 			<div className="py-2">
 				<p className="text-xs bg-stone-50 inline-block px-2 py-0.5 rounded">{category}</p>
-				<h3 className="text-md font-semibold line-clamp-2 px-2 md:px-0">{title}</h3>
+				<h3
+					className="text-md font-semibold line-clamp-2 px-2 md:px-0 cursor-pointer"
+					onClick={onClick}
+				>
+					{title}
+				</h3>
 			</div>
 		</div>
 	)

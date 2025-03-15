@@ -1,4 +1,4 @@
-const FeaturesSection = () => {
+const FeatureSection = () => {
     return (
         <div>
             <h2>Features Section</h2>
@@ -6,4 +6,4 @@ const FeaturesSection = () => {
     )
 }
 
-export default FeaturesSection
+export default FeatureSection

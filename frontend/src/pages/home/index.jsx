@@ -1,5 +1,5 @@
-import LatestNewsSection from './components/LatestNewsSection'
-import PostSlide from './components/PostSlide'
+import LatestNewsSection from './components/latestnews-section'
+import PostSlide from './components/slide-section'
 
 const HomePage = () => {
 	return (
