@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 import LogoHAU from '../../assets/logo-HAU.svg'
 import LogoKKT from '../../assets/logo-KKT.svg'
 
-import ExpandableSearchButton from './Search'
+import ExpandableSearchButton from './search'
 
 const TopNav = () => {
 	return (

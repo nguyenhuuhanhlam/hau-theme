@@ -1,0 +1,9 @@
+.from-wp p {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+
+.from-wp img {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}

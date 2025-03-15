@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom'
-import TopNav from './components/TopNav'
-import Footer from './components/Footer'
+
+import TopNav from './components/top-nav'
+import Footer from './components/footer'
 
 const MainLayout = () => {
 	return (
@@ -15,7 +16,7 @@ const MainLayout = () => {
 				<Outlet />
 			</div>
 
-			<div className="border-t border-stone-100">
+			<div className="bg-neutral-800">
 				<div className="max-w-[960px] mx-auto">
 					<Footer />
 				</div>
