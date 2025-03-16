@@ -6,3 +6,5 @@ const api = axios.create({
 
 export const getPosts = async (params) => await api.get('/posts?' + params)
 export const getPostDetail = async(postId) => await api.get(`/posts/${postId}`)
+
+export const getCategories = async () => await api.get('/categories?per_page=100')
