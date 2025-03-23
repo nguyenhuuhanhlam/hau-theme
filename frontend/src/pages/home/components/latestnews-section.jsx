@@ -37,6 +37,7 @@ const LatestNewsSection = () => {
 			<div>
 				<div className="container mx-auto">
 					<div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+
 						<div className="space-y-4 md:col-span-1">
 							{
 								posts.slice(0, 2)
@@ -53,14 +54,13 @@ const LatestNewsSection = () => {
 						</div>
 
 						<div className="flex flex-col items-center md:col-span-2">
-							<h2 className="text-lg w-full">
+								{posts[4]?
 								<ArticleCard
 									title={posts[4]?.title?.rendered}
 									image={posts[4]?._embedded['wp:featuredmedia'][0]['source_url']}
 									isSquareImage={true}
 									onClick={() => handleClick(posts[4]?.id)}
-								/>
-							</h2>
+								/>:null}
 						</div>
 
 						<div className="space-y-4 md:col-span-1">

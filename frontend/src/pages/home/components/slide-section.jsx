@@ -15,10 +15,10 @@ const PostSlide = () => {
 
 	useEffect(() => {
 		setSlideItems([
-			{ url: '/uploads/slides/slide-exam-1.jpg' },
-			{ url: '/uploads/slides/slide-exam-2.jpg' },
-			{ url: '/uploads/slides/slide-exam-3.jpg' },
-			{ url: '/uploads/slides/slide-exam-4.jpg' }
+			{ url: 'http://archihau.edu.vn/wp-content/uploads/2025/03/slide-exam-1.jpg' },
+			{ url: 'http://archihau.edu.vn/wp-content/uploads/2025/03/slide-exam-2.jpg' },
+			{ url: 'http://archihau.edu.vn/wp-content/uploads/2025/03/slide-exam-3.jpg' },
+			{ url: 'http://archihau.edu.vn/wp-content/uploads/2025/03/slide-exam-4.jpg' }
 		])
 	}, [])
 

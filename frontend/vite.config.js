@@ -4,10 +4,8 @@ import { resolve } from 'path'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
-const BUILD_DIR = resolve(__dirname, 'dist')
-
-// https://vite.dev/config/
 export default defineConfig({
+  base: './',
   plugins: [react(), tailwindcss(),],
   resolve: {
     alias: {
@@ -15,13 +13,18 @@ export default defineConfig({
     }
   },
   build: {
-    outDir: BUILD_DIR,
-    emptyOutDir: true, // Xóa thư mục trước khi build
+    outDir: resolve(__dirname, 'dist'),
+    emptyOutDir: true,
     assetsDir: '',
     manifest: true,
+    assetsInlineLimit: 0,
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'src/main.jsx')
+      },
+      output: {
+        format: 'iife',
+        // assetFileNames: 'assets/[name].[hash][extname]'
       }
     },
   }
